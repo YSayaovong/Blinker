@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blinker — Frontend Take-Home</title>
+  <meta name="description" content="Frontend interview project using HTML, CSS, and JavaScript only." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header__bar">
+      <a class="logo" href="#">Blinker</a>
+      <button class="nav__toggle" aria-expanded="false" aria-controls="nav">☰</button>
+      <nav id="nav" class="nav" aria-label="Primary">
+        <a class="nav__link" href="#inventory">Inventory</a>
+        <a class="nav__link" href="#how">How it works</a>
+        <a class="nav__link" href="#pricing">Pricing</a>
+        <a class="nav__link" href="#contact">Contact</a>
+        <a class="nav__link nav__link--pill" href="#favorites" id="favLink">Favorites (0)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" aria-label="Hero">
+      <div class="container hero__grid">
+        <div>
+          <h1 class="hero__title">Subscribe to your next ride</h1>
+          <p class="hero__lead">Flexible terms. Transparent pricing. No surprises.</p>
+          <a class="btn btn--primary" href="#inventory">Browse Inventory</a>
+        </div>
+        <img class="hero__img" src="hero.jpg" alt="Modern SUV on a city street" />
+      </div>
+    </section>
+
+    <!-- Controls -->
+    <section id="inventory" class="section container">
+      <header class="section__head">
+        <h2>Inventory</h2>
+        <form id="filters" class="controls" autocomplete="off">
+          <input id="q" name="q" class="input" placeholder="Search make/model…" />
+          <select id="segment" name="segment" class="select">
+            <option value="">All segments</option>
+            <option>SUV</option><option>Sedan</option><option>Truck</option><option>EV</option>
+          </select>
+          <select id="sort" name="sort" class="select">
+            <option value="price-asc">Price ↑</option>
+            <option value="price-desc">Price ↓</option>
+            <option value="year-desc">Year ↓</option>
+            <option value="year-asc">Year ↑</option>
+          </select>
+          <button class="btn" type="reset" id="resetBtn">Reset</button>
+        </form>
+      </header>
+
+      <div id="grid" class="grid" role="list"></div>
+      <div class="pager">
+        <button id="prev" class="btn" disabled>Prev</button>
+        <span id="pageLabel" aria-live="polite">Page 1</span>
+        <button id="next" class="btn">Next</button>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="section section--muted">
+      <div class="container">
+        <h2>How it works</h2>
+        <ol class="steps">
+          <li>Select a car</li>
+          <li>Pick a term</li>
+          <li>Verify license & insurance</li>
+          <li>Schedule pickup or delivery</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="section">
+      <div class="container">
+        <h2>Pricing</h2>
+        <div class="plans">
+          <article class="plan">
+            <h3>Monthly</h3>
+            <p class="price"><span>$</span>899</p>
+            <ul>
+              <li>Swap anytime</li>
+              <li>Maintenance included</li>
+              <li>Cancel monthly</li>
+            </ul>
+          </article>
+          <article class="plan plan--featured" aria-label="Best value">
+            <h3>Quarterly</h3>
+            <p class="price"><span>$</span>799</p>
+            <ul>
+              <li>Lower rate</li>
+              <li>Priority support</li>
+              <li>Complimentary detail</li>
+            </ul>
+          </article>
+          <article class="plan">
+            <h3>Annual</h3>
+            <p class="price"><span>$</span>749</p>
+            <ul>
+              <li>Best price</li>
+              <li>Free winter tires</li>
+              <li>Two swaps included</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section section--muted">
+      <div class="container">
+        <h2>Contact</h2>
+        <form id="contactForm" class="form" novalidate>
+          <label>Full name <input name="name" required minlength="2" /></label>
+          <label>Email <input name="email" type="email" required /></label>
+          <label>Message <textarea name="message" required minlength="10"></textarea></label>
+          <button class="btn btn--primary" type="submit">Send</button>
+          <p id="formMsg" class="form__msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <small>© <span id="year"></span> Blinker. All rights reserved.</small>
+      <a href="#top" class="link">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" aria-hidden="true" aria-labelledby="modalTitle" role="dialog">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__card" role="document">
+      <button class="modal__close" aria-label="Close" data-close>×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
