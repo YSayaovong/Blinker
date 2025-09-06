@@ -71,9 +71,8 @@ Open to suggestions for improvements. Please feel free to fork this repo and sub
 
 Distributed under the MIT License. See LICENSE for details.
 
-## 👤 About Me
+## 👤 About Me - Yengkong Sayaovong
 
-Yengkong Sayaovong
 📍 Python Developer & Data Engineer specializing in backend development, automation, and data pipelines. I build efficient ETL workflows, automate repetitive processes, and create clean, scalable solutions using Python, SQL, and cloud tools.
 
 I work best in focused, independent environments where results matter more than meetings. My experience spans building data ingestion pipelines, scraping and structuring large datasets, and optimizing reporting systems to save time and improve accuracy.
