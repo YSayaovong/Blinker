@@ -47,6 +47,10 @@ Blinker/
 
 ## 📸 Demo Preview
 
+<p align="center">
+  <img src="./assets/website.PNG" alt="Demo Preview" width="600"/>
+</p>
+
 ## 📈 Professional Relevance
 
 This project demonstrates:
@@ -69,7 +73,11 @@ Distributed under the MIT License. See LICENSE for details.
 
 ## 👤 About Me
 
-Wayengkong Sayaovong
-📍 Mechanical Designer & Financial Data Analyst | Aspiring Data Engineer
+Yengkong Sayaovong
+📍 Python Developer & Data Engineer specializing in backend development, automation, and data pipelines. I build efficient ETL workflows, automate repetitive processes, and create clean, scalable solutions using Python, SQL, and cloud tools.
+
+I work best in focused, independent environments where results matter more than meetings. My experience spans building data ingestion pipelines, scraping and structuring large datasets, and optimizing reporting systems to save time and improve accuracy.
+
+Key Skills: Python (Pandas, NumPy, Regular Expressions), SQL, ETL Pipelines, Web Scraping, AWS (S3, Lambda, RDS), Azure (fundamentals), Power BI, VBA, Git/GitHub.
 💼 Focused on building portfolio projects that bridge engineering, finance, and technology.
 🔗 GitHub: YSayaovong
