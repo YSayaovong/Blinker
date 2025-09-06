@@ -78,5 +78,7 @@ Distributed under the MIT License. See LICENSE for details.
 I work best in focused, independent environments where results matter more than meetings. My experience spans building data ingestion pipelines, scraping and structuring large datasets, and optimizing reporting systems to save time and improve accuracy.
 
 Key Skills: Python (Pandas, NumPy, Regular Expressions), SQL, ETL Pipelines, Web Scraping, AWS (S3, Lambda, RDS), Azure (fundamentals), Power BI, VBA, Git/GitHub.
-💼 Focused on building portfolio projects that bridge engineering, finance, and technology.
+
+💼 Focused on building frontend software engineering projects.
+
 🔗 GitHub: YSayaovong
