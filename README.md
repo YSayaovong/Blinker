@@ -38,8 +38,38 @@ No installation or server setup required.
 📂 Project Structure
 Blinker/
 ├── index.html     # Entry point
+
 ├── style.css      # Stylesheet
+
 ├── script.js      # Application logic
+
 └── assets/        # Images or supporting files
 
-📸 Demo Preview
+## 📸 Demo Preview
+
+## 📈 Professional Relevance
+
+This project demonstrates:
+
+- Front-end coding ability with clean, readable JavaScript.
+
+- Understanding of UI/UX basics through responsive CSS styling.
+
+- GitHub documentation and version control best practices.
+
+- A foundation that can be expanded into more complex applications (e.g., dashboards, interactive forms).
+
+## 🤝 Contributions & Feedback
+
+Open to suggestions for improvements. Please feel free to fork this repo and submit a pull request.
+
+## 📜 License
+
+Distributed under the MIT License. See LICENSE for details.
+
+## 👤 About Me
+
+Wayengkong Sayaovong
+📍 Mechanical Designer & Financial Data Analyst | Aspiring Data Engineer
+💼 Focused on building portfolio projects that bridge engineering, finance, and technology.
+🔗 GitHub: YSayaovong
