@@ -1,77 +1,96 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const car     = document.querySelector('.car');
-  const input   = document.querySelector('#q');
-  const button  = document.querySelector('#searchBtn');
-  const results = document.querySelector('#results');
+const API_URL = "https://jsonplaceholder.typicode.com/users";
+const grid = document.getElementById("grid");
+const statusEl = document.getElementById("status");
+const searchInput = document.getElementById("searchInput");
 
-  const showCar = () => {
-    car.classList.remove('out');
-    void car.offsetWidth;
-    car.classList.add('in');
+let robots = [];
+let filtered = [];
+
+function debounce(fn, ms = 200) {
+  let t;
+  return (...args) => {
+    clearTimeout(t);
+    t = setTimeout(() => fn.apply(null, args), ms);
   };
+}
 
-  const hideCar = () => {
-    car.classList.remove('in');
-    void car.offsetWidth;
-    car.classList.add('out');
-  };
+function makeCard({ id, name, username, email }) {
+  const uname = (username || name || String(id) || "").toString();
+  const url = new URL("https://robohash.org/" + encodeURIComponent(uname));
+  url.searchParams.set("size", "200x200");
+  url.searchParams.set("set", "set2");
 
-  input.addEventListener('focus', showCar);
-  input.addEventListener('click', showCar);
+  const art = document.createElement("article");
+  art.className = "card";
+  art.tabIndex = 0;
 
-  button.addEventListener('click', () => {
-    hideCar();
-    performSearch(input.value);
-  });
+  const img = document.createElement("img");
+  img.src = url.toString();
+  img.alt = `${name || "robot"} avatar`;
+  img.loading = "lazy";
+  img.decoding = "async";
+  img.referrerPolicy = "no-referrer";
 
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      hideCar();
-      performSearch(input.value);
-    }
-  });
+  const h3 = document.createElement("h3");
+  h3.textContent = name || "(no name)";
 
-  input.addEventListener('input', () => {
-    if (input.value.trim() === '') {
-      showCar();
-      results.innerHTML = '';
-    }
-  });
+  const pUser = document.createElement("p");
+  pUser.className = "sub";
+  pUser.textContent = username || "";
 
-  function performSearch(query) {
-    if (!query.trim()) return;
+  const pEmail = document.createElement("p");
+  pEmail.className = "muted";
+  pEmail.textContent = email || "";
 
-    const cars = [
-      { model: "Toyota Corolla", year: 2021, color: "White" },
-      { model: "Mazda 3", year: 2020, color: "Red" },
-      { model: "Hyundai i30", year: 2022, color: "Blue" }
-    ];
+  art.append(img, h3, pUser, pEmail);
+  return art;
+}
 
-    const filtered = cars.filter(car =>
-      car.model.toLowerCase().includes(query.toLowerCase())
-    );
+function clearGrid() {
+  grid.replaceChildren();
+}
 
-    displayResults(filtered);
+function render(list) {
+  clearGrid();
+  if (!list.length) {
+    statusEl.textContent = "No matches.";
+    statusEl.classList.remove("hidden");
+    return;
   }
+  statusEl.classList.add("hidden");
+  const frag = document.createDocumentFragment();
+  list.forEach(item => frag.appendChild(makeCard(item)));
+  grid.appendChild(frag);
+}
 
-  function displayResults(cars) {
-    results.innerHTML = '';
+function applyFilter(q) {
+  const query = q.trim().toLowerCase();
+  filtered = !query
+    ? robots.slice()
+    : robots.filter(r =>
+        (r.name || "").toLowerCase().includes(query) ||
+        (r.username || "").toLowerCase().includes(query) ||
+        (r.email || "").toLowerCase().includes(query)
+      );
+  render(filtered);
+}
 
-    if (cars.length === 0) {
-      results.innerHTML = '<p>No cars found. Try a different keyword.</p>';
-      return;
-    }
-
-    cars.forEach(car => {
-      const div = document.createElement('div');
-      div.className = 'result-item';
-      div.innerHTML = `
-        <h3>${car.model}</h3>
-        <p><strong>Year:</strong> ${car.year}</p>
-        <p><strong>Color:</strong> ${car.color}</p>
-      `;
-      results.appendChild(div);
-    });
+async function loadRobots() {
+  try {
+    statusEl.textContent = "Loading robots…";
+    const res = await fetch(API_URL, { method: "GET", mode: "cors" });
+    if (!res.ok) throw new Error(`Network error: ${res.status}`);
+    const data = await res.json();
+    robots = Array.isArray(data) ? data : [];
+    filtered = robots.slice();
+    statusEl.classList.add("hidden");
+    render(filtered);
+  } catch (err) {
+    console.error(err);
+    statusEl.textContent = "Unable to load data. Check your internet and refresh.";
+    statusEl.classList.remove("hidden");
   }
-});
+}
+
+searchInput.addEventListener("input", debounce(e => applyFilter(e.target.value), 150));
+loadRobots();

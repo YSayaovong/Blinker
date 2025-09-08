@@ -1,45 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blinker – Car Subscription</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Robofriends</title>
+
+  <!-- Strict, review-friendly CSP for static hosting -->
+  <meta http-equiv="Content-Security-Policy"
+        content="
+          default-src 'self';
+          script-src 'self';
+          style-src 'self';
+          img-src 'self' https://robohash.org data:;
+          connect-src https://jsonplaceholder.typicode.com;
+          object-src 'none';
+          base-uri 'none';
+          frame-ancestors 'none';
+          form-action 'none';
+          upgrade-insecure-requests
+        ">
+  <meta http-equiv="Referrer-Policy" content="no-referrer" />
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()" />
+
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="logo" href="#">
-        <img class="logo-icon" src="./blinker-icon.4f9b2663.png" alt="Blinker logo" />
-      </a>
-      <nav class="nav">
-        <a href="#">Home</a>
-        <a href="#">Find your car</a>
-      </nav>
-      <a class="btn btn-contact" href="#">CONTACT</a>
+  <header class="header">
+    <h1 class="title">Robofriends</h1>
+    <p class="subtitle">Search and browse friendly bots</p>
+    <div class="search">
+      <input id="searchInput" type="search" placeholder="Search by name, username, or email" aria-label="Search robots" />
     </div>
   </header>
 
-  <main class="hero">
-    <h1 class="title">Australia’s most awarded<br />car subscription platform</h1>
-    <p class="kicker">FIND YOUR DREAM CAR WITH <b>BLINKER</b></p>
-
-    <form class="search" onsubmit="return false;">
-      <label class="sr-only" for="q">Search</label>
-      <input id="q" class="input" type="search" placeholder="Search by Model, Make or Keyword" />
-      <button id="searchBtn" class="search-btn" type="button">Search</button>
-    </form>
-
-    <img class="building" src="./building.681ea6bf.png" alt="Building" />
-
-    <div class="car-stage">
-      <div class="car"></div>
-    </div>
-
-    <section id="results" class="results"></section>
+  <main class="container">
+    <div id="status" class="muted">Loading robots…</div>
+    <section id="grid" class="grid" aria-live="polite"></section>
   </main>
 
-  <script src="script.js"></script>
+  <footer class="footer">
+    <small>
+      Images by <a href="https://robohash.org/" target="_blank" rel="noopener noreferrer">RoboHash</a> ·
+      Data from JSONPlaceholder
+    </small>
+  </footer>
+
+  <!-- No inline JS -->
+  <script src="script.js" type="module" defer></script>
 </body>
 </html>
