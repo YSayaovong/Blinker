@@ -1,54 +1,77 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const q    = document.getElementById('q');
-  const btn  = document.getElementById('searchBtn');
-  const car  = document.querySelector('.car');   // <div class="car">
+  const car     = document.querySelector('.car');
+  const input   = document.querySelector('#q');
+  const button  = document.querySelector('#searchBtn');
+  const results = document.querySelector('#results');
 
-  if (!q || !btn || !car) return;
+  const showCar = () => {
+    car.classList.remove('out');
+    void car.offsetWidth;
+    car.classList.add('in');
+  };
 
-  // Make sure car begins off-screen to the right
-  function prime() {
-    car.style.transform = 'translateX(120%)';
-    car.style.willChange = 'transform';
-  }
+  const hideCar = () => {
+    car.classList.remove('in');
+    void car.offsetWidth;
+    car.classList.add('out');
+  };
 
-  let anim = null;
+  input.addEventListener('focus', showCar);
+  input.addEventListener('click', showCar);
 
-  function runCar() {
-    // Cancel any in-flight animation
-    if (anim && typeof anim.cancel === 'function') anim.cancel();
+  button.addEventListener('click', () => {
+    hideCar();
+    performSearch(input.value);
+  });
 
-    // Always start from the right
-    prime();
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      hideCar();
+      performSearch(input.value);
+    }
+  });
 
-    // Animate with Web Animations API (bypasses CSS class/keyframe issues)
-    anim = car.animate(
-      [
-        { transform: 'translateX(120%)' },
-        { transform: 'translateX(0%)' }
-      ],
-      {
-        duration: 2600,
-        easing: 'cubic-bezier(0.22, 1, 0.36, 1)', // ease-out feel
-        fill: 'forwards'
-      }
+  input.addEventListener('input', () => {
+    if (input.value.trim() === '') {
+      showCar();
+      results.innerHTML = '';
+    }
+  });
+
+  function performSearch(query) {
+    if (!query.trim()) return;
+
+    const cars = [
+      { model: "Toyota Corolla", year: 2021, color: "White" },
+      { model: "Mazda 3", year: 2020, color: "Red" },
+      { model: "Hyundai i30", year: 2022, color: "Blue" }
+    ];
+
+    const filtered = cars.filter(car =>
+      car.model.toLowerCase().includes(query.toLowerCase())
     );
 
-    anim.onfinish = () => {
-      car.style.transform = 'translateX(0%)'; // lock the final position
-      anim = null;
-    };
+    displayResults(filtered);
   }
 
-  function handle(e) {
-    if (e.type === 'keydown') {
-      if (e.key !== 'Enter') return;
-      e.preventDefault();
+  function displayResults(cars) {
+    results.innerHTML = '';
+
+    if (cars.length === 0) {
+      results.innerHTML = '<p>No cars found. Try a different keyword.</p>';
+      return;
     }
-    runCar();
-  }
 
-  // Wire up events once DOM is ready
-  prime();
-  btn.addEventListener('click', handle);
-  q.addEventListener('keydown', handle);
+    cars.forEach(car => {
+      const div = document.createElement('div');
+      div.className = 'result-item';
+      div.innerHTML = `
+        <h3>${car.model}</h3>
+        <p><strong>Year:</strong> ${car.year}</p>
+        <p><strong>Color:</strong> ${car.color}</p>
+      `;
+      results.appendChild(div);
+    });
+  }
 });

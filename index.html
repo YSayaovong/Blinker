@@ -2,57 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blinker – Car Subscription</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a class="logo" href="#" aria-label="Blinker home">
-        <img
-          class="logo-icon"
-          src="https://raw.githubusercontent.com/YSayaovong/Blinker/main/assets/blinker-icon.4f9b2663.png"
-          alt="Blinker"
-        />
+      <a class="logo" href="#">
+        <img class="logo-icon" src="./blinker-icon.4f9b2663.png" alt="Blinker logo" />
       </a>
-
       <nav class="nav">
         <a href="#">Home</a>
         <a href="#">Find your car</a>
       </nav>
-
       <a class="btn btn-contact" href="#">CONTACT</a>
     </div>
   </header>
 
   <main class="hero">
-    <h1 class="title">Australia’s most awarded<br/>car subscription platform</h1>
+    <h1 class="title">Australia’s most awarded<br />car subscription platform</h1>
     <p class="kicker">FIND YOUR DREAM CAR WITH <b>BLINKER</b></p>
 
     <form class="search" onsubmit="return false;">
-      <input id="q" class="input" type="text" placeholder="Search by Model, Make or Keyword" />
-      <button id="searchBtn" class="search-btn" type="button" aria-label="Search">
-        <svg width="28" height="28" viewBox="0 0 24 24">
-          <circle cx="11" cy="11" r="6" fill="none" stroke="white" stroke-width="2"/>
-          <path d="M20 20L16 16" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
+      <label class="sr-only" for="q">Search</label>
+      <input id="q" class="input" type="search" placeholder="Search by Model, Make or Keyword" />
+      <button id="searchBtn" class="search-btn" type="button">Search</button>
     </form>
 
-    <img
-      class="building"
-      alt="City illustration"
-      src="https://raw.githubusercontent.com/YSayaovong/Blinker/main/assets/building.681ea6bf.png"
-    />
+    <img class="building" src="./building.681ea6bf.png" alt="Building" />
 
-    <!-- Car as a div with background image -->
     <div class="car-stage">
       <div class="car"></div>
     </div>
+
+    <section id="results" class="results"></section>
   </main>
 
   <script src="script.js"></script>
