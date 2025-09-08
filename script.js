@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
   const car     = document.querySelector('.car');
   const input   = document.querySelector('#q');
-  const button  = document.querySelector('#searchBtn');
+  const form    = document.querySelector('.search');
   const results = document.querySelector('#results');
 
   const showCar = () => {
     car.classList.remove('out');
-    void car.offsetWidth;
+    void car.offsetWidth; // reflow to restart animation
     car.classList.add('in');
   };
 
@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
   input.addEventListener('focus', showCar);
   input.addEventListener('click', showCar);
 
-  button.addEventListener('click', () => {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
     hideCar();
     performSearch(input.value);
   });
@@ -35,43 +36,72 @@ document.addEventListener('DOMContentLoaded', () => {
   input.addEventListener('input', () => {
     if (input.value.trim() === '') {
       showCar();
-      results.innerHTML = '';
+      clearResults();
     }
   });
 
-  function performSearch(query) {
-    if (!query.trim()) return;
+  function setBusy(isBusy) {
+    results.setAttribute('aria-busy', isBusy ? 'true' : 'false');
+  }
 
+  function clearResults() {
+    results.replaceChildren();
+  }
+
+  function noResultsMessage() {
+    clearResults();
+    const p = document.createElement('p');
+    p.textContent = 'No cars found. Try a different keyword.';
+    results.appendChild(p);
+  }
+
+  function performSearch(query) {
+    const q = query.trim().toLowerCase();
+    if (!q) return;
+
+    setBusy(true);
+
+    // Demo dataset (static)
     const cars = [
       { model: "Toyota Corolla", year: 2021, color: "White" },
-      { model: "Mazda 3", year: 2020, color: "Red" },
-      { model: "Hyundai i30", year: 2022, color: "Blue" }
+      { model: "Mazda 3",        year: 2020, color: "Red"   },
+      { model: "Hyundai i30",    year: 2022, color: "Blue"  }
     ];
 
-    const filtered = cars.filter(car =>
-      car.model.toLowerCase().includes(query.toLowerCase())
-    );
-
+    const filtered = cars.filter(c => c.model.toLowerCase().includes(q));
     displayResults(filtered);
+    setBusy(false);
   }
 
   function displayResults(cars) {
-    results.innerHTML = '';
+    clearResults();
 
-    if (cars.length === 0) {
-      results.innerHTML = '<p>No cars found. Try a different keyword.</p>';
+    if (!cars.length) {
+      noResultsMessage();
       return;
     }
 
+    const frag = document.createDocumentFragment();
     cars.forEach(car => {
       const div = document.createElement('div');
       div.className = 'result-item';
-      div.innerHTML = `
-        <h3>${car.model}</h3>
-        <p><strong>Year:</strong> ${car.year}</p>
-        <p><strong>Color:</strong> ${car.color}</p>
-      `;
-      results.appendChild(div);
+
+      const h3 = document.createElement('h3');
+      h3.textContent = car.model;
+
+      const pYear = document.createElement('p');
+      const strongYear = document.createElement('strong');
+      strongYear.textContent = 'Year: ';
+      pYear.append(strongYear, document.createTextNode(String(car.year)));
+
+      const pColor = document.createElement('p');
+      const strongColor = document.createElement('strong');
+      strongColor.textContent = 'Color: ';
+      pColor.append(strongColor, document.createTextNode(car.color));
+
+      div.append(h3, pYear, pColor);
+      frag.appendChild(div);
     });
+    results.appendChild(frag);
   }
 });
