@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blinker – Car Subscription</title>
 
-  <!-- Strict CSP for static hosting -->
+  <!-- Strict but friendly CSP for static hosting -->
   <meta http-equiv="Content-Security-Policy"
         content="
           default-src 'self';
@@ -21,16 +21,16 @@
         ">
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a class="logo" href="#">
-        <img class="logo-icon" src="./blinker-icon.4f9b2663.png" alt="Blinker logo" />
+      <a class="logo" href="#" aria-label="Blinker home">
+        <img class="logo-icon" src="./blinker-icon.4f9b2663.png" width="128" height="32" alt="Blinker logo">
       </a>
-      <nav class="nav">
+      <nav class="nav" aria-label="primary">
         <a href="#">Home</a>
         <a href="#">Find your car</a>
       </nav>
@@ -39,20 +39,19 @@
   </header>
 
   <main class="hero">
-    <h1 class="title">Australia’s most awarded<br />car subscription platform</h1>
+    <h1 class="title">Australia’s most awarded<br>car subscription platform</h1>
     <p class="kicker">FIND YOUR DREAM CAR WITH <b>BLINKER</b></p>
 
-    <!-- Removed onsubmit inline JS -->
-    <form class="search">
+    <form class="search" aria-label="Car search">
       <label class="sr-only" for="q">Search</label>
-      <input id="q" class="input" type="search" placeholder="Search by Model, Make or Keyword" />
-      <button id="searchBtn" class="search-btn" type="submit">Search</button>
+      <input id="q" class="input" type="search" placeholder="Search by Model, Make or Keyword" autocomplete="off">
+      <button id="searchBtn" class="search-btn" type="submit" aria-label="Search">Search</button>
     </form>
 
-    <img class="building" src="./building.681ea6bf.png" alt="Building" />
+    <img class="building" src="./building.681ea6bf.png" alt="Building">
 
-    <div class="car-stage">
-      <div class="car"></div>
+    <div class="car-stage" aria-hidden="true">
+      <div class="car" id="car"></div>
     </div>
 
     <section id="results" class="results" aria-live="polite" aria-busy="false"></section>
