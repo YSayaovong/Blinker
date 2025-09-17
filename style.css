@@ -61,8 +61,10 @@ body {
   z-index: 2; /* ensure above building */
 }
 
+/* Ensure fully off-screen at both ends and layer above building */
 .car {
-  width: min(920px, 95vw); height: 200px;
+  width: min(920px, 95vw);
+  height: 200px;
   background: url("data:image/svg+xml;utf8,\
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 920 200'>\
   <defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='%236b2ab9'/><stop offset='1' stop-color='%23964be6'/></linearGradient></defs>\
@@ -72,10 +74,9 @@ body {
   <g fill='%23fff'><circle cx='220' cy='160' r='14'/><circle cx='680' cy='160' r='14'/></g>\
 </svg>") no-repeat center/contain;
 
-  transform: translateX(120%); /* fully off to the right initially */
+  transform: translateX(120%); /* start fully to the right */
   transition: transform 0.8s ease-in-out;
 }
-
 .car.in  { transform: translateX(0%); }
 .car.out { transform: translateX(-120%); }
 
