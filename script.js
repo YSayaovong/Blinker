@@ -2,98 +2,71 @@ document.addEventListener('DOMContentLoaded', () => {
   const car     = document.getElementById('car');
   const input   = document.getElementById('q');
   const form    = document.querySelector('.search');
-  const results = document.getElementById('results');
   const btn     = document.getElementById('searchBtn');
+  const results = document.getElementById('results');
 
-  const showCar = () => {
-    car.classList.remove('out');
-    // force reflow so repeated focus retriggers animation
-    void car.offsetWidth;
-    car.classList.add('in');
+  // Authoritative state switch: never leave both 'in' and 'out'
+  const setCar = (state) => {
+    if (state === 'in')  car.className = 'car in';
+    if (state === 'out') car.className = 'car out';
   };
 
-  const hideCar = () => {
-    car.classList.remove('in');
-    void car.offsetWidth;
-    car.classList.add('out');
-  };
+  const showCar = () => { void car.offsetWidth; setCar('in'); };
+  const hideCar = () => { void car.offsetWidth; setCar('out'); };
 
-  // Show car on focus/click/typing when empty
+  // Show on focus/click/empty input
   input.addEventListener('focus', showCar);
   input.addEventListener('click', showCar);
   input.addEventListener('input', () => {
-    if (input.value.trim() === '') {
-      showCar();
-      clearResults();
-    }
+    if (input.value.trim() === '') { showCar(); clearResults(); }
   });
 
-  // Submit via button or Enter
+  // Hide immediately when the button is pressed (before submit)
+  btn.addEventListener('pointerdown', hideCar);
+
+  // Hide on submit/Enter and run demo search
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     hideCar();
     performSearch(input.value);
   });
-  // Belt-and-suspenders for the button
-  btn.addEventListener('click', () => hideCar());
 
-  function setBusy(isBusy) {
-    results.setAttribute('aria-busy', isBusy ? 'true' : 'false');
-  }
+  function clearResults(){ results.replaceChildren(); }
+  function setBusy(b){ results.setAttribute('aria-busy', b ? 'true' : 'false'); }
 
-  function clearResults() {
-    results.replaceChildren();
-  }
-
-  function noResults() {
-    clearResults();
-    const p = document.createElement('p');
-    p.textContent = 'No cars found. Try a different keyword.';
-    results.appendChild(p);
-  }
-
-  function performSearch(query) {
-    const q = query.trim().toLowerCase();
-    if (!q) return;
-
+  function performSearch(query){
+    const q = query.trim().toLowerCase(); if (!q) return;
     setBusy(true);
-
-    // demo dataset
     const cars = [
       { model: 'Toyota Corolla', year: 2021, color: 'White' },
       { model: 'Mazda 3',        year: 2020, color: 'Red'   },
       { model: 'Hyundai i30',    year: 2022, color: 'Blue'  },
     ];
-
     const filtered = cars.filter(c => c.model.toLowerCase().includes(q));
     displayResults(filtered);
     setBusy(false);
   }
 
-  function displayResults(items) {
+  function displayResults(items){
     clearResults();
-    if (!items.length) return noResults();
-
+    if (!items.length){
+      const p = document.createElement('p');
+      p.textContent = 'No cars found. Try a different keyword.';
+      results.appendChild(p);
+      return;
+    }
     const frag = document.createDocumentFragment();
-    items.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'result-item';
-
-      const h3 = document.createElement('h3');
-      h3.textContent = item.model;
-
-      const y = document.createElement('p');
-      y.innerHTML = `<strong>Year:</strong> ${item.year}`;
-
-      const c = document.createElement('p');
-      c.innerHTML = `<strong>Color:</strong> ${item.color}`;
-
-      card.append(h3, y, c);
+    for (const item of items){
+      const card = document.createElement('div'); card.className = 'result-item';
+      card.innerHTML = `
+        <h3>${item.model}</h3>
+        <p><strong>Year:</strong> ${item.year}</p>
+        <p><strong>Color:</strong> ${item.color}</p>`;
       frag.appendChild(card);
-    });
+    }
     results.appendChild(frag);
   }
 
-  // Initial state: car parked offscreen to the right
-  showCar();
+  // Start hidden to the right; focusing the input will bring it in
+  setCar('out');
 });
