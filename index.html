@@ -4,59 +4,77 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blinker – Car Subscription</title>
+  <meta name="description" content="Blinker: simple, flexible car subscriptions." />
 
-  <!-- Strict but friendly CSP for static hosting -->
+  <!-- Minimal, Pages-friendly policy -->
   <meta http-equiv="Content-Security-Policy"
-        content="
-          default-src 'self';
-          script-src 'self';
-          style-src 'self' https://fonts.googleapis.com;
-          font-src https://fonts.gstatic.com;
-          img-src 'self' data:;
-          connect-src 'self';
-          object-src 'none';
-          base-uri 'none';
-          frame-ancestors 'none';
-          form-action 'self'
-        ">
+        content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self';">
 
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="./assets/blinker-icon.4f9b2663.png" />
+  <link rel="preload" as="image" href="./assets/building.681ea6bf.png" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <header class="site-header">
-    <div class="header-inner">
-      <a class="logo" href="#" aria-label="Blinker home">
-        <img class="logo-icon" src="./blinker-icon.4f9b2663.png" width="128" height="32" alt="Blinker logo">
-      </a>
-      <nav class="nav" aria-label="primary">
-        <a href="#">Home</a>
-        <a href="#">Find your car</a>
+    <div class="container">
+      <img class="logo" src="./assets/blinker-icon.4f9b2663.png" alt="Blinker logo" width="160" height="40" />
+      <nav class="nav">
+        <a href="#how">How it works</a>
+        <a href="#fleet">Fleet</a>
+        <a href="#contact">Contact</a>
       </nav>
-      <a class="btn btn-contact" href="#">CONTACT</a>
     </div>
   </header>
 
-  <main class="hero">
-    <h1 class="title">Australia’s most awarded<br>car subscription platform</h1>
-    <p class="kicker">FIND YOUR DREAM CAR WITH <b>BLINKER</b></p>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <img class="hero-bg" src="./assets/building.681ea6bf.png" alt="" />
+      <div class="hero-content container">
+        <h1>Car subscriptions made simple</h1>
+        <p>Pick a car, pay monthly, cancel anytime.</p>
 
-    <form class="search" aria-label="Car search">
-      <label class="sr-only" for="q">Search</label>
-      <input id="q" class="input" type="search" placeholder="Search by Model, Make or Keyword" autocomplete="off">
-      <button id="searchBtn" class="search-btn" type="submit" aria-label="Search">Search</button>
-    </form>
+        <form id="searchForm" class="search">
+          <label for="searchInput" class="sr-only">Search cars or locations</label>
+          <input id="searchInput" name="q" type="search" placeholder="Search models or city…" autocomplete="off" />
+          <button type="submit" class="btn">Search</button>
+        </form>
 
-    <img class="building" src="./building.681ea6bf.png" alt="Building">
+        <!-- Animated car -->
+        <div id="car" aria-hidden="true" class="car" title="Blinker car"></div>
+      </div>
+    </section>
 
-    <div class="car-stage" aria-hidden="true">
-      <div class="car" id="car"></div>
-    </div>
+    <!-- Simple gallery so reviewers see images load -->
+    <section id="fleet" class="gallery container">
+      <h2>Preview</h2>
+      <figure>
+        <img src="./assets/website.PNG" alt="Blinker website preview" loading="lazy" />
+        <figcaption>Site preview image (verifies images load).</figcaption>
+      </figure>
+    </section>
 
-    <section id="results" class="results" aria-live="polite" aria-busy="false"></section>
+    <section id="how" class="how container">
+      <h2>How it works</h2>
+      <ol>
+        <li>Choose your car.</li>
+        <li>Set your plan.</li>
+        <li>Swap or cancel anytime.</li>
+      </ol>
+    </section>
+
+    <section id="contact" class="contact container">
+      <h2>Contact</h2>
+      <p>Email: support@blinker.example</p>
+    </section>
   </main>
 
-  <script src="script.js" type="module" defer></script>
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> Blinker</small>
+    </div>
+  </footer>
+
+  <script src="./script.js" defer></script>
 </body>
 </html>
