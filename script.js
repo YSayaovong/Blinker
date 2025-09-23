@@ -28,23 +28,6 @@ form.addEventListener('submit', (e) => {
   const q = input.value.trim();
   if (!q) { input.style.borderColor = '#ff7675'; setTimeout(() => input.style.borderColor = '', 500); return; }
   hideCar();
-  alert(`Searching for: ${q}`);
+  // Simulated result navigation (replace with your results page if you add one)
+  window.open(`https://www.google.com/search?q=${encodeURIComponent('Blinker ' + q)}`, '_blank', 'noopener');
 });
-
-// ---------- Image fallback logic ----------
-// If a local /assets/... image 404s on GitHub Pages, swap to RAW URL.
-const fallbacks = {
-  logoImg:   "https://raw.githubusercontent.com/YSayaovong/Blinker/main/assets/blinker-icon.4f9b2663.png",
-  heroBg:    "https://raw.githubusercontent.com/YSayaovong/Blinker/main/assets/building.681ea6bf.png",
-  previewImg:"https://raw.githubusercontent.com/YSayaovong/Blinker/main/assets/website.PNG"
-};
-
-for (const [id, rawUrl] of Object.entries(fallbacks)) {
-  const img = document.getElementById(id);
-  if (!img) continue;
-  img.addEventListener('error', () => {
-    if (img.dataset.fallbackApplied === '1') return; // avoid loops
-    img.dataset.fallbackApplied = '1';
-    img.src = rawUrl;
-  }, { once: true });
-}

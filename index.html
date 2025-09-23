@@ -5,34 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blinker – Car Subscription</title>
 
-  <!-- CSP allows our own assets + raw.githubusercontent.com images -->
+  <!-- Tight, local-only CSP (no external hosts needed) -->
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self';
-                 img-src 'self' data: https://raw.githubusercontent.com;
-                 style-src 'self' 'unsafe-inline';
-                 script-src 'self';">
+        content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self';">
 
-  <link rel="icon" type="image/png" href="./assets/blinker-icon.4f9b2663.png" />
-  <link rel="preload" as="image" href="./assets/building.681ea6bf.png" />
+  <!-- Use your GitHub Pages absolute URLs (case-sensitive) -->
+  <link rel="icon" type="image/png"
+        href="https://ysayaovong.github.io/Blinker/assets/blinker-icon.4f9b2663.png" />
+  <link rel="preload" as="image"
+        href="https://ysayaovong.github.io/Blinker/assets/building.681ea6bf.png" />
+
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <!-- local first; JS will swap to RAW if 404 -->
-      <img id="logoImg" class="logo" src="./assets/blinker-icon.4f9b2663.png"
+      <img class="logo"
+           src="https://ysayaovong.github.io/Blinker/assets/blinker-icon.4f9b2663.png"
            alt="Blinker logo" width="160" height="40" />
       <nav class="nav">
-        <a href="#how">Home</a>
-        <a href="#fleet">Find your car</a>
-        <a href="#contact" class="btn">CONTACT</a>
+        <!-- open in new tab -->
+        <a href="#how" target="_blank" rel="noopener">Home</a>
+        <a href="#fleet" target="_blank" rel="noopener">Find your car</a>
+        <a href="#contact" class="btn" target="_blank" rel="noopener">CONTACT</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <img id="heroBg" class="hero-bg" src="./assets/building.681ea6bf.png" alt="" />
+      <img class="hero-bg"
+           src="https://ysayaovong.github.io/Blinker/assets/building.681ea6bf.png"
+           alt="" />
       <div class="hero-content container">
         <h1>Australia’s most awarded<br/>car subscription platform</h1>
         <p class="kicker">FIND YOUR DREAM CAR WITH BLINKER</p>
@@ -51,7 +55,9 @@
     <section id="fleet" class="gallery container">
       <h2>Preview</h2>
       <figure>
-        <img id="previewImg" src="./assets/website.PNG" alt="Blinker website preview" loading="lazy" />
+        <img
+          src="https://ysayaovong.github.io/Blinker/assets/website.PNG"
+          alt="Blinker website preview" loading="lazy" />
         <figcaption>Building</figcaption>
       </figure>
     </section>
