@@ -1,14 +1,8 @@
 :root{
-  --bg: #0f1220;
-  --panel: #161a2b;
-  --text: #e9ecf5;
-  --muted: #aab1c6;
-  --accent: #58a6ff;
+  --bg:#0f1220; --panel:#161a2b; --text:#e9ecf5; --muted:#aab1c6; --accent:#58a6ff;
 }
-
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial,sans-serif}
-
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif}
 .container{width:min(1100px,92%);margin-inline:auto}
 
 .site-header{position:sticky;top:0;background:rgba(15,18,32,.8);backdrop-filter:blur(6px);z-index:10;border-bottom:1px solid #22263c}
@@ -25,33 +19,21 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 
 .search{display:flex;gap:10px;align-items:center}
 .search input{
-  flex:1; padding:14px 14px;
-  border-radius:10px;border:1px solid #2a2f49;background:var(--panel);color:var(--text);
+  flex:1;padding:14px;border-radius:10px;border:1px solid #2a2f49;background:var(--panel);color:var(--text);
   outline:none;transition:border-color .2s, box-shadow .2s
 }
 .search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(88,166,255,.15)}
-.btn{
-  padding:12px 16px;border-radius:10px;border:1px solid #2a2f49;background:#243151;
-  color:var(--text);cursor:pointer
-}
+.btn{padding:12px 16px;border-radius:10px;border:1px solid #2a2f49;background:#243151;color:var(--text);cursor:pointer}
 .btn:hover{filter:brightness(1.1)}
 
 .car{
-  position:relative; width:280px; height:96px; margin-top:26px;
-  transform:translateX(-120%); /* off-canvas by default */
-  transition:transform 600ms cubic-bezier(.22,1,.36,1);
-  background-repeat:no-repeat; background-size:contain; background-position:center;
-  /* Inline SVG so no external asset is required */
-  background-image:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='560' height='192' viewBox='0 0 560 192'><g fill='none' stroke='%23a8b3cf' stroke-width='8'><rect x='20' y='70' rx='18' ry='18' width='440' height='60' fill='%232a3458'/><circle cx='110' cy='150' r='26' fill='%23161a2b'/><circle cx='330' cy='150' r='26' fill='%23161a2b'/></g></svg>");
-  will-change: transform;
+  position:relative;width:280px;height:96px;margin-top:26px;
+  transform:translateX(-120%);transition:transform 600ms cubic-bezier(.22,1,.36,1);
+  background-repeat:no-repeat;background-size:contain;background-position:center;will-change:transform;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='560' height='192' viewBox='0 0 560 192'><g fill='none' stroke='%23a8b3cf' stroke-width='8'><rect x='20' y='70' rx='18' ry='18' width='440' height='60' fill='%232a3458'/><circle cx='110' cy='150' r='26' fill='%23161a2b'/><circle cx='330' cy='150' r='26' fill='%23161a2b'/></g></svg>");
 }
-
-/* When input is focused, slide in */
-.show-car .car{ transform:translateX(0) }
-
-/* When leaving (on submit/blur), add .car-exit once; it slides out */
-.car-exit{ transform:translateX(120%) }
+.show-car .car{transform:translateX(0)}
+.car-exit{transform:translateX(120%)}
 
 .gallery{padding:48px 0}
 .gallery img{max-width:100%;height:auto;border:1px solid #2a2f49;border-radius:12px}
@@ -61,7 +43,4 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 .how ol{padding-left:1.1rem}
 .site-footer{border-top:1px solid #22263c;padding:20px 0;margin-top:40px;color:var(--muted);text-align:center}
 
-/* Accessibility helper */
-.sr-only{
-  position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0
-}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

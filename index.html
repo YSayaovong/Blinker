@@ -4,20 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blinker – Car Subscription</title>
-  <meta name="description" content="Blinker: simple, flexible car subscriptions." />
 
-  <!-- Minimal, Pages-friendly policy -->
+  <!-- Allow images from GitHub raw CDN -->
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self';">
+        content="default-src 'self'; img-src 'self' data: https://raw.githubusercontent.com; style-src 'self' 'unsafe-inline'; script-src 'self';">
 
-  <link rel="icon" type="image/png" href="./assets/blinker-icon.4f9b2663.png" />
-  <link rel="preload" as="image" href="./assets/building.681ea6bf.png" />
+  <!-- Use RAW links (not blob) so images always load -->
+  <link rel="icon" type="image/png"
+        href="https://raw.githubusercontent.com/YSayaovong/Blinker/main/assets/blinker-icon.4f9b2663.png" />
+  <link rel="preload" as="image"
+        href="https://raw.githubusercontent.com/YSayaovong/Blinker/main/assets/building.681ea6bf.png" />
+
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <img class="logo" src="./assets/blinker-icon.4f9b2663.png" alt="Blinker logo" width="160" height="40" />
+      <img class="logo"
+        src="https://raw.githubusercontent.com/YSayaovong/Blinker/main/assets/blinker-icon.4f9b2663.png"
+        alt="Blinker logo" width="160" height="40" />
       <nav class="nav">
         <a href="#how">How it works</a>
         <a href="#fleet">Fleet</a>
@@ -27,9 +32,10 @@
   </header>
 
   <main>
-    <!-- Hero -->
     <section class="hero">
-      <img class="hero-bg" src="./assets/building.681ea6bf.png" alt="" />
+      <img class="hero-bg"
+        src="https://raw.githubusercontent.com/YSayaovong/Blinker/main/assets/building.681ea6bf.png"
+        alt="" />
       <div class="hero-content container">
         <h1>Car subscriptions made simple</h1>
         <p>Pick a car, pay monthly, cancel anytime.</p>
@@ -45,12 +51,13 @@
       </div>
     </section>
 
-    <!-- Simple gallery so reviewers see images load -->
     <section id="fleet" class="gallery container">
       <h2>Preview</h2>
       <figure>
-        <img src="./assets/website.PNG" alt="Blinker website preview" loading="lazy" />
-        <figcaption>Site preview image (verifies images load).</figcaption>
+        <img
+          src="https://raw.githubusercontent.com/YSayaovong/Blinker/main/assets/website.PNG"
+          alt="Blinker website preview" loading="lazy" />
+        <figcaption>Image loaded from GitHub RAW (verifies pictures work).</figcaption>
       </figure>
     </section>
 
