@@ -4,65 +4,74 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blinker – Car Subscription</title>
+  <meta name="description" content="Australia’s most awarded car subscription platform">
 
-  <!-- Tight, local-only CSP (no external hosts needed) -->
+  <!-- Local assets only -->
   <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self';">
 
-  <!-- Use your GitHub Pages absolute URLs (case-sensitive) -->
-  <link rel="icon" type="image/png"
-        href="https://ysayaovong.github.io/Blinker/assets/blinker-icon.4f9b2663.png" />
-  <link rel="preload" as="image"
-        href="https://ysayaovong.github.io/Blinker/assets/building.681ea6bf.png" />
-
+  <link rel="icon" type="image/png" href="./assets/blinker-icon.4f9b2663.png" />
+  <link rel="preload" as="image" href="./assets/building.681ea6bf.png" />
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <img class="logo"
-           src="https://ysayaovong.github.io/Blinker/assets/blinker-icon.4f9b2663.png"
-           alt="Blinker logo" width="160" height="40" />
+      <img class="logo" src="./assets/blinker-icon.4f9b2663.png" alt="Blinker logo" width="120" height="28" />
       <nav class="nav">
-        <!-- open in new tab -->
-        <a href="#how" target="_blank" rel="noopener">Home</a>
-        <a href="#fleet" target="_blank" rel="noopener">Find your car</a>
-        <a href="#contact" class="btn" target="_blank" rel="noopener">CONTACT</a>
+        <!-- same-tab links -->
+        <a href="#home">Home</a>
+        <a href="#fleet">Find your car</a>
+        <a href="#contact" class="btn-outline">CONTACT</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="home">
     <section class="hero">
-      <img class="hero-bg"
-           src="https://ysayaovong.github.io/Blinker/assets/building.681ea6bf.png"
-           alt="" />
+      <img class="hero-bg" src="./assets/building.681ea6bf.png" alt="" />
       <div class="hero-content container">
-        <h1>Australia’s most awarded<br/>car subscription platform</h1>
-        <p class="kicker">FIND YOUR DREAM CAR WITH BLINKER</p>
+        <h1>Australia’s most awarded<br>car subscription platform</h1>
+        <p class="kicker">FIND YOUR DREAM CAR WITH <strong>BLINKER</strong></p>
 
         <form id="searchForm" class="search">
-          <label for="searchInput" class="sr-only">Search cars or locations</label>
-          <input id="searchInput" name="q" type="search"
-                 placeholder="Search by Model, Make or Keyword" autocomplete="off" />
-          <button type="submit" class="btn">Search</button>
+          <label for="searchInput" class="sr-only">Search</label>
+          <input id="searchInput" type="search" placeholder="Search by Model, Make or Keyword" autocomplete="off" />
+          <button class="btn" type="submit" aria-label="Search">
+            <span class="mag">&#128269;</span>
+          </button>
         </form>
 
-        <div id="car" aria-hidden="true" class="car" title="Blinker car"></div>
+        <!-- Purple hatchback (inline SVG) -->
+        <div id="carWrap" aria-hidden="true">
+          <svg id="car" viewBox="0 0 520 180" role="img">
+            <title>blinker hatchback</title>
+            <defs>
+              <linearGradient id="p" x1="0" x2="1">
+                <stop offset="0" stop-color="#7a36ff"/>
+                <stop offset="1" stop-color="#6a14d8"/>
+              </linearGradient>
+            </defs>
+            <!-- body -->
+            <path d="M40 120c6-28 24-48 68-58 22-5 62-6 86-5 16-24 52-34 98-30 24 2 44 16 56 40 24 2 44 7 60 18 10 7 20 19 24 35 2 9-2 18-12 18H72c-20 0-30-5-32-18z"
+                  fill="url(#p)" stroke="#4a1ea3" stroke-width="4" />
+            <!-- window -->
+            <path d="M220 59c18-23 46-30 86-27 17 1 31 10 40 28l-134-1z"
+                  fill="#e9e3fb" opacity=".9" stroke="#4a1ea3" stroke-width="3"/>
+            <!-- blinker text -->
+            <text x="120" y="115" font-family="Segoe UI, Arial, sans-serif"
+                  font-size="36" fill="#ffffff" font-weight="700">blinker</text>
+            <!-- wheels -->
+            <g fill="#0f1220" stroke="#cfd6ff" stroke-width="6">
+              <circle cx="160" cy="145" r="24"/>
+              <circle cx="370" cy="145" r="24"/>
+            </g>
+          </svg>
+        </div>
       </div>
     </section>
 
-    <section id="fleet" class="gallery container">
-      <h2>Preview</h2>
-      <figure>
-        <img
-          src="https://ysayaovong.github.io/Blinker/assets/website.PNG"
-          alt="Blinker website preview" loading="lazy" />
-        <figcaption>Building</figcaption>
-      </figure>
-    </section>
-
-    <section id="how" class="how container">
+    <section id="fleet" class="how container">
       <h2>How it works</h2>
       <ol>
         <li>Choose your car.</li>
