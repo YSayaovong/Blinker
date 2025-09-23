@@ -5,48 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blinker – Car Subscription</title>
 
-  <!-- Allow images from GitHub raw CDN -->
+  <!-- CSP allows our own assets + raw.githubusercontent.com images -->
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; img-src 'self' data: https://raw.githubusercontent.com; style-src 'self' 'unsafe-inline'; script-src 'self';">
+        content="default-src 'self';
+                 img-src 'self' data: https://raw.githubusercontent.com;
+                 style-src 'self' 'unsafe-inline';
+                 script-src 'self';">
 
-  <!-- Use RAW links (not blob) so images always load -->
-  <link rel="icon" type="image/png"
-        href="https://raw.githubusercontent.com/YSayaovong/Blinker/main/assets/blinker-icon.4f9b2663.png" />
-  <link rel="preload" as="image"
-        href="https://raw.githubusercontent.com/YSayaovong/Blinker/main/assets/building.681ea6bf.png" />
-
+  <link rel="icon" type="image/png" href="./assets/blinker-icon.4f9b2663.png" />
+  <link rel="preload" as="image" href="./assets/building.681ea6bf.png" />
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <img class="logo"
-        src="https://raw.githubusercontent.com/YSayaovong/Blinker/main/assets/blinker-icon.4f9b2663.png"
-        alt="Blinker logo" width="160" height="40" />
+      <!-- local first; JS will swap to RAW if 404 -->
+      <img id="logoImg" class="logo" src="./assets/blinker-icon.4f9b2663.png"
+           alt="Blinker logo" width="160" height="40" />
       <nav class="nav">
-        <a href="#how">How it works</a>
-        <a href="#fleet">Fleet</a>
-        <a href="#contact">Contact</a>
+        <a href="#how">Home</a>
+        <a href="#fleet">Find your car</a>
+        <a href="#contact" class="btn">CONTACT</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <img class="hero-bg"
-        src="https://raw.githubusercontent.com/YSayaovong/Blinker/main/assets/building.681ea6bf.png"
-        alt="" />
+      <img id="heroBg" class="hero-bg" src="./assets/building.681ea6bf.png" alt="" />
       <div class="hero-content container">
-        <h1>Car subscriptions made simple</h1>
-        <p>Pick a car, pay monthly, cancel anytime.</p>
+        <h1>Australia’s most awarded<br/>car subscription platform</h1>
+        <p class="kicker">FIND YOUR DREAM CAR WITH BLINKER</p>
 
         <form id="searchForm" class="search">
           <label for="searchInput" class="sr-only">Search cars or locations</label>
-          <input id="searchInput" name="q" type="search" placeholder="Search models or city…" autocomplete="off" />
+          <input id="searchInput" name="q" type="search"
+                 placeholder="Search by Model, Make or Keyword" autocomplete="off" />
           <button type="submit" class="btn">Search</button>
         </form>
 
-        <!-- Animated car -->
         <div id="car" aria-hidden="true" class="car" title="Blinker car"></div>
       </div>
     </section>
@@ -54,10 +51,8 @@
     <section id="fleet" class="gallery container">
       <h2>Preview</h2>
       <figure>
-        <img
-          src="https://raw.githubusercontent.com/YSayaovong/Blinker/main/assets/website.PNG"
-          alt="Blinker website preview" loading="lazy" />
-        <figcaption>Image loaded from GitHub RAW (verifies pictures work).</figcaption>
+        <img id="previewImg" src="./assets/website.PNG" alt="Blinker website preview" loading="lazy" />
+        <figcaption>Building</figcaption>
       </figure>
     </section>
 

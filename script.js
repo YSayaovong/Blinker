@@ -30,3 +30,21 @@ form.addEventListener('submit', (e) => {
   hideCar();
   alert(`Searching for: ${q}`);
 });
+
+// ---------- Image fallback logic ----------
+// If a local /assets/... image 404s on GitHub Pages, swap to RAW URL.
+const fallbacks = {
+  logoImg:   "https://raw.githubusercontent.com/YSayaovong/Blinker/main/assets/blinker-icon.4f9b2663.png",
+  heroBg:    "https://raw.githubusercontent.com/YSayaovong/Blinker/main/assets/building.681ea6bf.png",
+  previewImg:"https://raw.githubusercontent.com/YSayaovong/Blinker/main/assets/website.PNG"
+};
+
+for (const [id, rawUrl] of Object.entries(fallbacks)) {
+  const img = document.getElementById(id);
+  if (!img) continue;
+  img.addEventListener('error', () => {
+    if (img.dataset.fallbackApplied === '1') return; // avoid loops
+    img.dataset.fallbackApplied = '1';
+    img.src = rawUrl;
+  }, { once: true });
+}
