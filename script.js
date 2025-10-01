@@ -1,48 +1,104 @@
-const vehicles = [
-  {id:1, make:'Toyota', model:'RAV4 Hybrid', type:'SUV',   price:299, img:'https://images.unsplash.com/photo-1619767886558-efdc259cde1e?q=80&w=1600&auto=format&fit=crop'},
-  {id:2, make:'Subaru',  model:'Forester',    type:'SUV',   price:249, img:'https://images.unsplash.com/photo-1605557635309-4f8a2b0ea57a?q=80&w=1600&auto=format&fit=crop'},
-  {id:3, make:'Volkswagen', model:'Golf',     type:'Hatch', price:199, img:'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop'},
-  {id:4, make:'Polestar',  model:'2',         type:'EV',    price:399, img:'https://images.unsplash.com/photo-1668695278799-39140f6a9f8e?q=80&w=1600&auto=format&fit=crop'},
-  {id:5, make:'Toyota',   model:'Camry',      type:'Sedan', price:219, img:'https://images.unsplash.com/photo-1524125913555-1c45255d054b?q=80&w=1600&auto=format&fit=crop'},
-  {id:6, make:'Subaru',   model:'Impreza',    type:'Hatch', price:209, img:'https://images.unsplash.com/photo-1624116048723-11b1fc4fc22f?q=80&w=1600&auto=format&fit=crop'}
+/* ---------- Data (demo) ---------- */
+const VEHICLES = [
+  {
+    id: 1, year: 2021, make: 'Volkswagen', model: 'T-Roc',
+    km: 20, body: 'Wagon', trans: 'Automatic',
+    price: 3390,
+    img: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1200&auto=format&fit=crop'
+  },
+  {
+    id: 2, year: 2018, make: 'Kia', model: 'Cerato',
+    km: 80282, body: 'Hatchback', trans: 'Auto Seq Sportshift',
+    price: 1590,
+    img: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=1200&auto=format&fit=crop'
+  },
+  {
+    id: 3, year: 2021, make: 'MG', model: 'HS',
+    km: 20, body: 'Wagon', trans: 'Auto Dual Clutch',
+    price: 2434,
+    img: 'https://images.unsplash.com/photo-1617814079634-3d1f3bfa2a71?q=80&w=1200&auto=format&fit=crop'
+  },
+  {
+    id: 4, year: 2020, make: 'Kia', model: 'Sportage',
+    km: 32000, body: 'SUV', trans: 'Automatic',
+    price: 2290,
+    img: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1200&auto=format&fit=crop'
+  },
+  {
+    id: 5, year: 2022, make: 'Volkswagen', model: 'Tiguan',
+    km: 5000, body: 'SUV', trans: 'Automatic',
+    price: 2890,
+    img: 'https://images.unsplash.com/photo-1549924231-f129b911e442?q=80&w=1200&auto=format&fit=crop'
+  },
+  {
+    id: 6, year: 2019, make: 'Subaru', model: 'XV',
+    km: 48000, body: 'Wagon', trans: 'Automatic',
+    price: 1990,
+    img: 'https://images.unsplash.com/photo-1605557635309-4f8a2b0ea57a?q=80&w=1200&auto=format&fit=crop'
+  }
 ];
 
-const grid = document.getElementById('grid');
-const nores = document.getElementById('no-results');
+/* ---------- Utilities ---------- */
+const $ = (sel, root=document) => root.querySelector(sel);
+const fmtCurrency = (n) => `$${n.toLocaleString()}`;
+const fmtKm = (n) => `${n.toLocaleString()} km`;
 
-function cardHTML(v){
-  return `<div class="card bg-white rounded-2xl overflow-hidden">
-    <img src="${v.img}" alt="${v.make} ${v.model}" class="h-44 w-full object-cover">
-    <div class="p-4">
-      <div class="flex items-center justify-between">
-        <h4 class="font-semibold">${v.make} ${v.model}</h4>
-        <div class="text-teal-700 font-bold">$${v.price}<span class="text-xs font-medium text-slate-500">/wk</span></div>
-      </div>
-      <div class="mt-1 text-sm text-slate-600">${v.type}</div>
-      <button class="mt-3 w-full px-4 py-2 rounded-xl bg-slate-900 text-white hover:bg-slate-700">Subscribe</button>
-    </div>
-  </div>`;
+/* ---------- Browse page logic ---------- */
+function initBrowse() {
+  const grid = $('#grid');
+  if (!grid) return; // not on browse page
+
+  // Elements
+  const qInput = $('#q');
+  const priceMax = $('#priceMax');
+  const priceLabel = $('#priceRangeLabel');
+  const nores = $('#no-results');
+
+  // Seed query from URL (?q=...)
+  const urlQ = new URLSearchParams(location.search).get('q') || '';
+  qInput.value = urlQ;
+
+  function card(v) {
+    return `
+      <article class="card">
+        <img class="card__img" src="${v.img}" alt="${v.year} ${v.make} ${v.model}">
+        <div class="card__body">
+          <a href="#" class="card__title">${v.year} ${v.make} ${v.model}</a>
+          <div class="specs">
+            <span>🚗</span><span>${fmtKm(v.km)}</span>
+            <span>🚙</span><span>${v.body}</span>
+            <span>⚙️</span><span>${v.trans}</span>
+          </div>
+          <div class="price">${fmtCurrency(v.price)}</div>
+        </div>
+      </article>
+    `;
+  }
+
+  function render() {
+    const q = qInput.value.trim().toLowerCase();
+    const max = Number(priceMax.value);
+
+    priceLabel.textContent = `$0 to ${fmtCurrency(max)}`;
+
+    const list = VEHICLES.filter(v => {
+      const matchesQ = !q || `${v.year} ${v.make} ${v.model} ${v.body} ${v.trans}`.toLowerCase().includes(q);
+      const matchesPrice = v.price <= max;
+      return matchesQ && matchesPrice;
+    });
+
+    grid.innerHTML = list.map(card).join('');
+    nores.classList.toggle('hidden', list.length > 0);
+  }
+
+  qInput.addEventListener('input', render);
+  priceMax.addEventListener('input', render);
+
+  render();
 }
 
-function render(){
-  const make  = document.getElementById('filter-make').value;
-  const type  = document.getElementById('filter-type').value;
-  const price = +document.getElementById('filter-price').value || Infinity;
-  const q     = document.getElementById('filter-search').value.toLowerCase();
-
-  const list = vehicles.filter(v =>
-    (!make || v.make === make) &&
-    (!type || v.type === type) &&
-    (v.price <= price) &&
-    (!q || `${v.make} ${v.model}`.toLowerCase().includes(q))
-  );
-  grid.innerHTML = list.map(cardHTML).join('');
-  nores.classList.toggle('hidden', list.length > 0);
+/* ---------- Home page (no special JS, form goes to browse) ---------- */
+function init() {
+  initBrowse();
 }
-
-['filter-make','filter-type','filter-price','filter-search'].forEach(id =>
-  document.getElementById(id).addEventListener('input', render)
-);
-
-render();
-document.getElementById('y').textContent = new Date().getFullYear();
+document.addEventListener('DOMContentLoaded', init);

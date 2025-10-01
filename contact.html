@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Blinker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__row">
+      <a class="brand" href="index.html">
+        <span class="brand__mark"></span>
+        <span class="brand__text">blinker</span>
+      </a>
+      <nav class="menu">
+        <a href="index.html" class="menu__link">Home</a>
+        <a href="browse.html" class="menu__link">Find your car</a>
+        <a href="contact.html" class="btn btn--pill is-active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section">
+    <h1>Contact us</h1>
+    <p class="muted">Tell us about your needs and we’ll get back to you shortly.</p>
+    <form class="card form" onsubmit="event.preventDefault(); alert('Thanks — we will be in touch.');">
+      <div class="grid grid--two">
+        <label>First name<input required/></label>
+        <label>Last name<input required/></label>
+      </div>
+      <label>Work email<input type="email" required/></label>
+      <label>Company<input/></label>
+      <label>Message<textarea rows="5"></textarea></label>
+      <button class="btn btn--primary">Send</button>
+    </form>
+  </main>
+</body>
+</html>
