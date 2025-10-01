@@ -1,97 +1,218 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blinker – Car Subscription</title>
-  <meta name="description" content="Australia’s most awarded car subscription platform">
+  <title>Car Subscription Platform for Dealerships</title>
+  <meta name="description" content="Car rental & subscription software for dealerships and fleets." />
 
-  <!-- Local assets only -->
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self';">
+  <!-- Tailwind via CDN for utility classes -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <link rel="icon" type="image/png" href="./assets/blinker-icon.4f9b2663.png" />
-  <link rel="preload" as="image" href="./assets/building.681ea6bf.png" />
-  <link rel="stylesheet" href="./style.css" />
+  <!-- App styles -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <header class="site-header">
-    <div class="container">
-      <img class="logo" src="./assets/blinker-icon.4f9b2663.png" alt="Blinker logo" width="120" height="28" />
-      <nav class="nav">
-        <!-- same-tab links -->
-        <a href="#home">Home</a>
-        <a href="#fleet">Find your car</a>
-        <a href="#contact" class="btn-outline">CONTACT</a>
+<body class="bg-white text-slate-800">
+  <!-- Sticky Nav -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-slate-200">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2 font-bold text-slate-900">
+        <div class="w-8 h-8 rounded-lg brand-gradient"></div>
+        <span>AutoFlex</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="#find" class="hover:text-teal-700">Find your car</a>
+        <a href="#solutions" class="hover:text-teal-700">Solutions</a>
+        <a href="#pricing" class="hover:text-teal-700">Pricing</a>
+        <a href="#contact" class="hover:text-teal-700">Contact</a>
       </nav>
+      <div class="flex items-center gap-2">
+        <a href="#contact" class="hidden sm:inline-block px-4 py-2 rounded-xl border border-slate-300 hover:bg-slate-50">Request a Demo</a>
+        <a href="#contact" class="px-4 py-2 rounded-xl bg-teal-600 text-white hover:bg-teal-700">Get Started</a>
+      </div>
     </div>
   </header>
 
-  <main id="home">
-    <section class="hero">
-      <img class="hero-bg" src="./assets/building.681ea6bf.png" alt="" />
-      <div class="hero-content container">
-        <h1>Australia’s most awarded<br>car subscription platform</h1>
-        <p class="kicker">FIND YOUR DREAM CAR WITH <strong>BLINKER</strong></p>
-
-        <form id="searchForm" class="search">
-          <label for="searchInput" class="sr-only">Search</label>
-          <input id="searchInput" type="search" placeholder="Search by Model, Make or Keyword" autocomplete="off" />
-          <button class="btn" type="submit" aria-label="Search">
-            <span class="mag">&#128269;</span>
-          </button>
-        </form>
-
-        <!-- Purple hatchback (inline SVG) -->
-        <div id="carWrap" aria-hidden="true">
-          <svg id="car" viewBox="0 0 520 180" role="img">
-            <title>blinker hatchback</title>
-            <defs>
-              <linearGradient id="p" x1="0" x2="1">
-                <stop offset="0" stop-color="#7a36ff"/>
-                <stop offset="1" stop-color="#6a14d8"/>
-              </linearGradient>
-            </defs>
-            <!-- body -->
-            <path d="M40 120c6-28 24-48 68-58 22-5 62-6 86-5 16-24 52-34 98-30 24 2 44 16 56 40 24 2 44 7 60 18 10 7 20 19 24 35 2 9-2 18-12 18H72c-20 0-30-5-32-18z"
-                  fill="url(#p)" stroke="#4a1ea3" stroke-width="4" />
-            <!-- window -->
-            <path d="M220 59c18-23 46-30 86-27 17 1 31 10 40 28l-134-1z"
-                  fill="#e9e3fb" opacity=".9" stroke="#4a1ea3" stroke-width="3"/>
-            <!-- blinker text -->
-            <text x="120" y="115" font-family="Segoe UI, Arial, sans-serif"
-                  font-size="36" fill="#ffffff" font-weight="700">blinker</text>
-            <!-- wheels -->
-            <g fill="#0f1220" stroke="#cfd6ff" stroke-width="6">
-              <circle cx="160" cy="145" r="24"/>
-              <circle cx="370" cy="145" r="24"/>
-            </g>
-          </svg>
+  <!-- Hero -->
+  <section id="home" class="hero-gradient text-white">
+    <div class="container mx-auto px-4 py-20 md:py-28">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+            Car rental software built for <span class="text-teal-300">recurring revenue</span>
+          </h1>
+          <p class="mt-6 text-lg/7 text-slate-200 max-w-xl">
+            Launch subscription-style rentals, manage lifecycle events, and automate billing. White-label, dealership-ready, and fleet-friendly.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#find" class="px-5 py-3 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-900 font-semibold">Browse Vehicles</a>
+            <a href="#contact" class="px-5 py-3 rounded-xl glass border border-white/10 text-white">Talk to Sales</a>
+          </div>
+          <div class="mt-8 text-sm text-slate-300">Trusted by dealerships & fleets worldwide</div>
+          <div class="mt-3 flex flex-wrap items-center gap-6 opacity-80">
+            <img alt="brand" class="h-6" src="https://dummyimage.com/120x24/ffffff/aaaaaa.png&text=Brand+1">
+            <img alt="brand" class="h-6" src="https://dummyimage.com/120x24/ffffff/aaaaaa.png&text=Brand+2">
+            <img alt="brand" class="h-6" src="https://dummyimage.com/120x24/ffffff/aaaaaa.png&text=Brand+3">
+          </div>
+        </div>
+        <div class="relative">
+          <div class="absolute -top-6 -left-6 w-24 h-24 rounded-2xl bg-teal-500/20 blur-2xl"></div>
+          <img alt="platform preview" class="relative w-full rounded-2xl shadow-2xl border border-white/10" src="https://images.unsplash.com/photo-1549924231-f129b911e442?q=80&w=1600&auto=format&fit=crop" />
         </div>
       </div>
-    </section>
-
-    <section id="fleet" class="how container">
-      <h2>How it works</h2>
-      <ol>
-        <li>Choose your car.</li>
-        <li>Set your plan.</li>
-        <li>Swap or cancel anytime.</li>
-      </ol>
-    </section>
-
-    <section id="contact" class="contact container">
-      <h2>Contact</h2>
-      <p>Email: support@blinker.example</p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <small>© <span id="year"></span> Blinker</small>
     </div>
+  </section>
+
+  <!-- Solutions -->
+  <section id="solutions" class="py-16 md:py-24 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold">All-in-one rental & subscription solution</h2>
+        <p class="mt-4 text-slate-600">Tailored tools that optimise utilisation and unlock new revenue streams for your fleet.</p>
+      </div>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <div class="card rounded-2xl p-6 bg-white">
+          <h3 class="font-semibold text-lg">Rental</h3>
+          <p class="mt-2 text-sm text-slate-600">Enable recurring vehicle rentals with deposits, extensions, and returns.</p>
+        </div>
+        <div class="card rounded-2xl p-6 bg-white">
+          <h3 class="font-semibold text-lg">Subscription</h3>
+          <p class="mt-2 text-sm text-slate-600">Flexible access with bundled insurance, maintenance and roadside.</p>
+        </div>
+        <div class="card rounded-2xl p-6 bg-white">
+          <h3 class="font-semibold text-lg">Leasing</h3>
+          <p class="mt-2 text-sm text-slate-600">Operate leases with schedules, residuals, and automated invoicing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vehicle Finder -->
+  <section id="find" class="py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <div class="flex items-end justify-between gap-4 flex-wrap">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold">Find your car</h2>
+          <p class="mt-2 text-slate-600">Explore vehicles available for subscription-style rental.</p>
+        </div>
+        <!-- Filters -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 w-full md:w-auto">
+          <select id="filter-make" class="px-3 py-2 rounded-xl border border-slate-300 bg-white text-sm">
+            <option value="">Make</option>
+            <option>Toyota</option>
+            <option>Subaru</option>
+            <option>Volkswagen</option>
+            <option>Polestar</option>
+          </select>
+          <select id="filter-type" class="px-3 py-2 rounded-xl border border-slate-300 bg-white text-sm">
+            <option value="">Type</option>
+            <option>SUV</option>
+            <option>Sedan</option>
+            <option>Hatch</option>
+            <option>EV</option>
+          </select>
+          <select id="filter-price" class="px-3 py-2 rounded-xl border border-slate-300 bg-white text-sm">
+            <option value="">Max /wk</option>
+            <option value="199">$199</option>
+            <option value="249">$249</option>
+            <option value="299">$299</option>
+            <option value="399">$399</option>
+          </select>
+          <input id="filter-search" class="px-3 py-2 rounded-xl border border-slate-300 bg-white text-sm" placeholder="Search" />
+        </div>
+      </div>
+
+      <div id="grid" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      <div id="no-results" class="hidden mt-6 text-center text-slate-500">No vehicles match your filters.</div>
+    </div>
+  </section>
+
+  <!-- Pricing / Value Props -->
+  <section id="pricing" class="py-16 md:py-24 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card rounded-2xl p-6 bg-white">
+          <h3 class="font-semibold">Built-in Tax Engine</h3>
+          <p class="mt-2 text-sm text-slate-600">Automatically calculate regional taxes (GST, VAT) for compliance.</p>
+        </div>
+        <div class="card rounded-2xl p-6 bg-white">
+          <h3 class="font-semibold">Fraud & Risk Signals</h3>
+          <p class="mt-2 text-sm text-slate-600">Assess applications with identity and payment risk indicators.</p>
+        </div>
+        <div class="card rounded-2xl p-6 bg-white">
+          <h3 class="font-semibold">Website in One Click</h3>
+          <p class="mt-2 text-sm text-slate-600">Launch a white-label storefront or embed booking widgets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold">Contact sales</h2>
+          <p class="mt-3 text-slate-600">Tell us about your fleet and we’ll tailor a solution.</p>
+          <ul class="mt-6 space-y-3 text-slate-700">
+            <li>• Email: sales@example.com</li>
+            <li>• Phone: +1 (555) 111-2222</li>
+            <li>• Address: 100 Fleet Ave, Your City</li>
+          </ul>
+        </div>
+        <form class="card bg-white rounded-2xl p-6" onsubmit="event.preventDefault(); alert('Thanks — we\\'ll be in touch!')">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <label class="text-sm">First name<input required class="mt-1 w-full px-3 py-2 rounded-xl border border-slate-300" /></label>
+            <label class="text-sm">Last name<input required class="mt-1 w-full px-3 py-2 rounded-xl border border-slate-300" /></label>
+            <label class="text-sm md:col-span-2">Work email<input type="email" required class="mt-1 w-full px-3 py-2 rounded-xl border border-slate-300" /></label>
+            <label class="text-sm md:col-span-2">Company<input class="mt-1 w-full px-3 py-2 rounded-xl border border-slate-300" /></label>
+            <label class="text-sm md:col-span-2">Message<textarea rows="4" class="mt-1 w-full px-3 py-2 rounded-xl border border-slate-300"></textarea></label>
+          </div>
+          <button class="mt-4 w-full px-4 py-3 rounded-xl bg-teal-600 text-white font-semibold hover:bg-teal-700">Request a Demo</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200">
+    <div class="container mx-auto px-4 py-10 text-sm text-slate-600 grid md:grid-cols-4 gap-8">
+      <div>
+        <div class="flex items-center gap-2 font-bold text-slate-900">
+          <div class="w-8 h-8 rounded-lg brand-gradient"></div>
+          <span>AutoFlex</span>
+        </div>
+        <p class="mt-3">White-label car rental & subscription software.</p>
+      </div>
+      <div>
+        <div class="font-semibold text-slate-800">Solutions</div>
+        <ul class="mt-3 space-y-2">
+          <li><a href="#solutions" class="hover:text-teal-700">Rental</a></li>
+          <li><a href="#solutions" class="hover:text-teal-700">Subscription</a></li>
+          <li><a href="#solutions" class="hover:text-teal-700">Leasing</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-semibold text-slate-800">Company</div>
+        <ul class="mt-3 space-y-2">
+          <li><a href="#contact" class="hover:text-teal-700">About</a></li>
+          <li><a href="#contact" class="hover:text-teal-700">Careers</a></li>
+          <li><a href="#contact" class="hover:text-teal-700">Press</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-semibold text-slate-800">Legal</div>
+        <ul class="mt-3 space-y-2">
+          <li><a href="#" class="hover:text-teal-700">Terms</a></li>
+          <li><a href="#" class="hover:text-teal-700">Privacy</a></li>
+          <li><a href="#" class="hover:text-teal-700">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-slate-200 text-center text-xs text-slate-500 py-6">© <span id="y"></span> AutoFlex. All rights reserved.</div>
   </footer>
 
-  <script src="./script.js" defer></script>
+  <!-- App script -->
+  <script src="app.js"></script>
 </body>
 </html>
