@@ -31,16 +31,41 @@
       <h1 class="hero__title hero__title--xl">
         Australia’s most awarded<br/>car subscription platform
       </h1>
-      <h2 class="hero__eyebrow">FIND YOUR DREAM CAR WITH <span class="accent">BLINKER</span></h2>
+      <h2 class="hero__eyebrow">
+        FIND YOUR DREAM CAR WITH <span class="accent">BLINKER</span>
+      </h2>
 
-      <form id="home-search-form" class="search search--home" action="browse.html" method="get">
-        <input id="home-search-input" name="q" class="search__input" placeholder="Search by Model, Make or Keyword" />
-        <button id="home-search-btn" class="search__btn" aria-label="Search">
-          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-            <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.71.71l.27.28v.79L20 21.5 21.5 20 15.5 14zM10 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" fill="currentColor"/>
+      <!-- Search with animated car -->
+      <div class="hero-search-wrap">
+        <form id="homeSearchForm" class="search search--home" action="browse.html" method="get">
+          <input id="homeQ" name="q" class="search__input" placeholder="Search by Model, Make or Keyword" autocomplete="off" />
+          <button id="homeSearchBtn" class="search__btn" aria-label="Search">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+              <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.71.71l.27.28v.79L20 21.5 21.5 20 15.5 14zM10 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" fill="currentColor"/>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Car animation layer -->
+        <div id="car" class="car" aria-hidden="true">
+          <!-- Simple SVG car (royalty-free style) -->
+          <svg viewBox="0 0 360 120" width="360" height="120">
+            <!-- body -->
+            <rect x="40" y="50" width="260" height="40" rx="10" fill="#6b3df0"/>
+            <path d="M80,50 L140,30 H240 L280,50 Z" fill="#6b3df0"/>
+            <!-- windows -->
+            <rect x="150" y="36" width="70" height="14" rx="3" fill="#d7ccff"/>
+            <rect x="90" y="36" width="50" height="14" rx="3" fill="#d7ccff"/>
+            <!-- wheels -->
+            <circle cx="110" cy="95" r="16" fill="#23262f"/>
+            <circle cx="110" cy="95" r="8" fill="#8e94a1"/>
+            <circle cx="250" cy="95" r="16" fill="#23262f"/>
+            <circle cx="250" cy="95" r="8" fill="#8e94a1"/>
+            <!-- light -->
+            <rect x="290" y="62" width="10" height="8" rx="2" fill="#ffd166"/>
           </svg>
-        </button>
-      </form>
+        </div>
+      </div>
 
       <!-- Illustration -->
       <div class="city-illustration" aria-hidden="true">
@@ -52,26 +77,6 @@
           <div class="tower"></div>
         </div>
         <div class="trees"></div>
-
-        <!-- Animated car -->
-        <div id="car" class="car">
-          <!-- Minimal inline SVG car (license-safe) -->
-          <svg viewBox="0 0 300 120" width="300" height="120">
-            <defs>
-              <linearGradient id="body" x1="0" x2="1">
-                <stop offset="0" stop-color="#7a46ff"/><stop offset="1" stop-color="#a16dff"/>
-              </linearGradient>
-            </defs>
-            <rect x="30" y="55" width="210" height="35" rx="8" fill="url(#body)"/>
-            <rect x="90" y="35" width="90" height="28" rx="6" fill="#6b3df0"/>
-            <rect x="98" y="40" width="34" height="20" rx="3" fill="#e9f0ff"/>
-            <rect x="138" y="40" width="34" height="20" rx="3" fill="#e9f0ff"/>
-            <circle cx="85" cy="100" r="16" fill="#222"/>
-            <circle cx="85" cy="100" r="8" fill="#ddd"/>
-            <circle cx="210" cy="100" r="16" fill="#222"/>
-            <circle cx="210" cy="100" r="8" fill="#ddd"/>
-          </svg>
-        </div>
       </div>
     </div>
   </section>
