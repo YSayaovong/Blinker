@@ -1,84 +1,85 @@
-# Blinker 🚦
+# 🚦 Responsive Front-End Application with Live API Integration, Dynamic UI, and Animation
 
-A lightweight and interactive **JavaScript application** built to demonstrate clean front-end design, responsive layouts, and modular coding practices.  
-
-This project was developed as part of my journey to strengthen front-end engineering fundamentals and showcase how small components can be expanded into scalable applications.
+A **front-end web application** demonstrating responsive design, live API integration, clean architecture, and interactive UI/UX with animations. This project showcases practical front-end engineering skills and dynamic rendering based on external data sources.
 
 ---
 
-## 🔑 Highlights
+## 📊 Executive Summary
 
-- **Dynamic UI** – Interactive blinking component built with vanilla JavaScript.  
-- **Responsive Design** – Fully styled with CSS for desktop and mobile layouts.  
-- **Clean Architecture** – Simple, modular structure that can be extended into larger applications.  
-- **Employer-Focused** – Demonstrates proficiency with **HTML, CSS, and JavaScript**, along with GitHub project management best practices.  
-
----
-
-## 🛠️ Tech Stack
-
-- **Languages:** JavaScript (ES6+), HTML5, CSS3  
-- **Tools:** Git, GitHub  
-- **Methodology:** Modular coding, semantic markup, responsive styling  
+- **Business Problem:** Static projects don’t reflect modern front-end expectations for interactivity and real-time data.  
+- **Solution:** This project demonstrates API-driven rendering, responsive layouts, and polished UI design to meet employer and user expectations.  
+- **Next Steps:** Expand features with charting, authentication, and deployment.  
+- **Impact:** Shows ability to deliver **interactive, professional-grade web applications** that improve engagement and credibility.
 
 ---
 
-## 🚀 Getting Started
+## ❓ Business Problem
 
-### 1. Clone the Repository
-
-git clone https://github.com/YSayaovong/Blinker.git
-cd Blinker
-
-## 2. Open in Browser
-
-Simply open index.html in your preferred browser.
-No installation or server setup required.
-
-📂 Project Structure
-Blinker/
-├── index.html     # Entry point
-
-├── style.css      # Stylesheet
-
-├── script.js      # Application logic
-
-└── assets/        # Images or supporting files
-
-## 📸 Demo Preview
+Why this project matters:  
+- Employers need to see **real-world front-end problem-solving**.  
+- Static HTML/CSS alone doesn’t highlight **API integration or interactivity**.  
+- This application connects **design + logic** with real data and animations.  
 
 <p align="center">
   <img src="./assets/website.PNG" alt="Demo Preview" width="600"/>
 </p>
 
-## 📈 Professional Relevance
+---
 
-This project demonstrates:
+## 🧪 Methodology
 
-- Front-end coding ability with clean, readable JavaScript.
+1. **Data Integration:** API calls to NHTSA for car data and Wikipedia for images.  
+2. **Dynamic Rendering:** JavaScript creates cards dynamically with live results.  
+3. **Responsive Design:** CSS grid/flexbox ensures usability across devices.  
+4. **Animations:** Hero car enters/exits on user interaction for polished UX.  
 
-- Understanding of UI/UX basics through responsive CSS styling.
+---
 
-- GitHub documentation and version control best practices.
+## 🛠 Skills Demonstrated
 
-- A foundation that can be expanded into more complex applications (e.g., dashboards, interactive forms).
+- **JavaScript (ES6+):** Async/await, DOM manipulation, external API handling.  
+- **CSS3 & HTML5:** Responsive layouts, animations, and accessibility.  
+- **Problem-Solving:** Managing missing/incorrect data with fallbacks.  
+- **Git/GitHub:** Clean repo structure, documentation, version control.  
 
-## 🤝 Contributions & Feedback
+---
 
-Open to suggestions for improvements. Please feel free to fork this repo and submit a pull request.
+## 📈 Results & Business Recommendation
 
-## 📜 License
+- Delivered a **dynamic front-end application** with real data integration.  
+- Validated ability to merge **UI/UX design** with **API-driven logic**.  
+- **Recommendation:** Extend this into a dashboard app or expand functionality for stronger portfolio impact.  
 
-Distributed under the MIT License. See LICENSE for details.
+---
 
-## 👤 About Me - Yengkong Sayaovong
+## 🔮 Next Steps
 
-📍 Python Developer & Data Engineer specializing in backend development, automation, and data pipelines. I build efficient ETL workflows, automate repetitive processes, and create clean, scalable solutions using Python, SQL, and cloud tools.
+- Add filters, sorting, and chart visualizations (Chart.js / D3.js).  
+- Integrate backend (Node.js / Express) for persistent user data.  
+- Deploy with **Netlify/Vercel** for live demos.  
+- Add testing (Jest/Cypress) for production readiness.  
 
-I work best in focused, independent environments where results matter more than meetings. My experience spans building data ingestion pipelines, scraping and structuring large datasets, and optimizing reporting systems to save time and improve accuracy.
+---
 
-Key Skills: Python (Pandas, NumPy, Regular Expressions), SQL, ETL Pipelines, Web Scraping, AWS (S3, Lambda, RDS), Azure (fundamentals), Power BI, VBA, Git/GitHub.
+## 📂 Project Structure
 
-💼 Focused on building frontend software engineering projects.
+```
+Blinker-Frontend/
+├── index.html     # Home with animated search
+├── browse.html    # Browse page with API results
+├── contact.html   # Contact form
+├── style.css      # Styling
+├── script.js      # Logic and API integration
+└── assets/        # Images and supporting files
+```
 
-🔗 GitHub: YSayaovong
+---
+
+## 👤 About Me — Yengkong Sayaovong
+
+📍 Mechanical Designer & aspiring Data/Front-End Engineer. I build **responsive front-end applications** and **data-driven solutions** that connect design, interactivity, and business context.  
+
+**Key Skills:** JavaScript, HTML5, CSS3, Python, SQL, Power BI, Git/GitHub, AWS (S3/Lambda), Excel.  
+
+💼 Focused on portfolio projects that demonstrate **front-end engineering** and **data analytics**.  
+🔗 GitHub: [YSayaovong](https://github.com/YSayaovong)
