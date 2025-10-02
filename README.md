@@ -72,14 +72,3 @@ Blinker-Frontend/
 ├── script.js      # Logic and API integration
 └── assets/        # Images and supporting files
 ```
-
----
-
-## 👤 About Me — Yengkong Sayaovong
-
-📍 Mechanical Designer & aspiring Data/Front-End Engineer. I build **responsive front-end applications** and **data-driven solutions** that connect design, interactivity, and business context.  
-
-**Key Skills:** JavaScript, HTML5, CSS3, Python, SQL, Power BI, Git/GitHub, AWS (S3/Lambda), Excel.  
-
-💼 Focused on portfolio projects that demonstrate **front-end engineering** and **data analytics**.  
-🔗 GitHub: [YSayaovong](https://github.com/YSayaovong)
