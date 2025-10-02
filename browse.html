@@ -3,13 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blinker-style — Browse</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>Browse cars — Blinker</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Nav -->
   <header class="nav">
     <div class="container nav__row">
       <a class="brand" href="index.html">
@@ -19,19 +17,19 @@
       <nav class="menu">
         <a href="index.html" class="menu__link">Home</a>
         <a href="browse.html" class="menu__link is-active">Find your car</a>
-        <a href="contact.html" class="btn btn--pill btn--primary-ghost">Contact</a>
+        <a href="contact.html" class="btn btn--pill">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero image -->
+  <!-- Hero with background image -->
   <section class="hero hero--image">
-    <div class="container hero__content hero__content--browse">
-      <h1 class="hero__title hero__title--sm">Browse our cars</h1>
+    <div class="container hero__content hero__content--compact hero__content--center">
+      <h1 class="hero__title hero__title--small">Browse our cars</h1>
       <form class="search" id="browse-search" onsubmit="return false;">
         <input id="q" class="search__input" placeholder="Search by Make, Model or Keyword" />
         <button class="search__btn" aria-label="Search">
-          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
             <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.71.71l.27.28v.79L20 21.5 21.5 20 15.5 14zM10 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" fill="currentColor"/>
           </svg>
         </button>
@@ -39,7 +37,7 @@
     </div>
   </section>
 
-  <main class="container section">
+  <main class="container section section--center">
     <div class="filters">
       <div class="filters__price">
         <label for="priceMax" class="filters__label">Price range: <span id="priceRangeLabel">$0 to $100,000</span></label>
@@ -52,6 +50,17 @@
     <div id="grid" class="grid"></div>
     <p id="no-results" class="muted hidden">No vehicles match your filters.</p>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer__row">
+      <p>&copy; <span id="year"></span> Blinker — All rights reserved.</p>
+      <nav class="footer__menu">
+        <a href="index.html">Home</a>
+        <a href="browse.html">Find your car</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>

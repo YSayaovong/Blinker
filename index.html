@@ -3,10 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blinker-style — Home</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>Blinker — Car Subscription Platform</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -20,54 +17,27 @@
       <nav class="menu">
         <a href="index.html" class="menu__link is-active">Home</a>
         <a href="browse.html" class="menu__link">Find your car</a>
-        <a href="contact.html" class="btn btn--pill btn--primary-ghost">Contact</a>
+        <a href="contact.html" class="btn btn--pill">Contact</a>
       </nav>
     </div>
   </header>
 
   <!-- Hero -->
   <section class="hero hero--plain">
-    <div class="container hero__content hero__content--home">
-      <h1 class="hero__title hero__title--xl">
-        Australia’s most awarded<br/>car subscription platform
-      </h1>
-      <h2 class="hero__eyebrow">
-        FIND YOUR DREAM CAR WITH <span class="accent">BLINKER</span>
-      </h2>
+    <div class="container hero__content hero__content--center">
+      <h1 class="hero__title">Australia's most awarded<br/>car subscription platform</h1>
+      <h2 class="hero__subtitle">FIND YOUR DREAM CAR WITH <span class="accent">BLINKER</span></h2>
 
-      <!-- Search with animated car -->
-      <div class="hero-search-wrap">
-        <form id="homeSearchForm" class="search search--home" action="browse.html" method="get">
-          <input id="homeQ" name="q" class="search__input" placeholder="Search by Model, Make or Keyword" autocomplete="off" />
-          <button id="homeSearchBtn" class="search__btn" aria-label="Search">
-            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-              <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.71.71l.27.28v.79L20 21.5 21.5 20 15.5 14zM10 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" fill="currentColor"/>
-            </svg>
-          </button>
-        </form>
-
-        <!-- Car animation layer -->
-        <div id="car" class="car" aria-hidden="true">
-          <!-- Simple SVG car (royalty-free style) -->
-          <svg viewBox="0 0 360 120" width="360" height="120">
-            <!-- body -->
-            <rect x="40" y="50" width="260" height="40" rx="10" fill="#6b3df0"/>
-            <path d="M80,50 L140,30 H240 L280,50 Z" fill="#6b3df0"/>
-            <!-- windows -->
-            <rect x="150" y="36" width="70" height="14" rx="3" fill="#d7ccff"/>
-            <rect x="90" y="36" width="50" height="14" rx="3" fill="#d7ccff"/>
-            <!-- wheels -->
-            <circle cx="110" cy="95" r="16" fill="#23262f"/>
-            <circle cx="110" cy="95" r="8" fill="#8e94a1"/>
-            <circle cx="250" cy="95" r="16" fill="#23262f"/>
-            <circle cx="250" cy="95" r="8" fill="#8e94a1"/>
-            <!-- light -->
-            <rect x="290" y="62" width="10" height="8" rx="2" fill="#ffd166"/>
+      <form id="home-search-form" class="search search--large" action="browse.html" method="get">
+        <input id="home-search-input" name="q" class="search__input" placeholder="Search by Model, Make or Keyword" />
+        <button class="search__btn" aria-label="Search">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.71.71l.27.28v.79L20 21.5 21.5 20 15.5 14zM10 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" fill="currentColor"/>
           </svg>
-        </div>
-      </div>
+        </button>
+      </form>
 
-      <!-- Illustration -->
+      <!-- Simple illustration -->
       <div class="city-illustration" aria-hidden="true">
         <div class="sun"></div>
         <div class="birds"></div>
@@ -77,9 +47,32 @@
           <div class="tower"></div>
         </div>
         <div class="trees"></div>
+
+        <!-- Animated car -->
+        <div id="hero-car" class="car car--hidden" aria-hidden="true">
+          <!-- minimal SVG car silhouette -->
+          <svg viewBox="0 0 200 60" width="200" height="60" role="img" aria-label="car">
+            <path d="M10,40 L30,30 L90,30 L120,20 L160,20 L185,35 L190,40 L190,45 L10,45 Z" fill="#4b1fc3"/>
+            <circle cx="55" cy="45" r="10" fill="#111827"/>
+            <circle cx="150" cy="45" r="10" fill="#111827"/>
+            <rect x="95" y="22" width="20" height="8" fill="#87e6ef"/>
+            <rect x="120" y="20" width="28" height="10" fill="#87e6ef"/>
+          </svg>
+        </div>
       </div>
     </div>
   </section>
+
+  <footer class="site-footer">
+    <div class="container footer__row">
+      <p>&copy; <span id="year"></span> Blinker — All rights reserved.</p>
+      <nav class="footer__menu">
+        <a href="index.html">Home</a>
+        <a href="browse.html">Find your car</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>

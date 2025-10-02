@@ -3,10 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blinker-style — Contact</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>Contact — Blinker</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -19,12 +16,12 @@
       <nav class="menu">
         <a href="index.html" class="menu__link">Home</a>
         <a href="browse.html" class="menu__link">Find your car</a>
-        <a href="contact.html" class="btn btn--pill btn--primary-ghost is-active">Contact</a>
+        <a href="contact.html" class="btn btn--pill is-active">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main class="container section">
+  <main class="container section section--center">
     <h1>Contact us</h1>
     <p class="muted">Tell us about your needs and we’ll get back to you shortly.</p>
     <form class="card form" onsubmit="event.preventDefault(); alert('Thanks — we will be in touch.');">
@@ -38,5 +35,16 @@
       <button class="btn btn--primary">Send</button>
     </form>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer__row">
+      <p>&copy; <span id="year"></span> Blinker — All rights reserved.</p>
+      <nav class="footer__menu">
+        <a href="index.html">Home</a>
+        <a href="browse.html">Find your car</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>
